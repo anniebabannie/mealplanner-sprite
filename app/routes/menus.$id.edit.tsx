@@ -166,7 +166,7 @@ export default function EditMenu() {
                 <div key={dish.id} className="relative group rounded-xl overflow-hidden border border-stone-200 shadow-sm">
                   <img src={dish.image_url} alt={dish.title} className="w-full aspect-square object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <p className="absolute bottom-0 left-0 right-0 px-2.5 py-2 text-white text-xs font-medium leading-tight">
+                  <p className="absolute bottom-0 left-0 right-0 px-2.5 py-2 text-white text-xs font-medium leading-tight line-clamp-2">
                     {dish.title}
                   </p>
                   <button
