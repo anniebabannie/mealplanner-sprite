@@ -1,87 +1,59 @@
-# Welcome to React Router!
+# Meal Planner
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A weekly meal planning app that uses AI to generate overhead food photos for each dish. Built with React Router v7, Tailwind CSS, SQLite, and OpenAI's image generation API. Images are stored on Tigris (S3-compatible object storage).
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Create weekly menus by typing dish names
+- AI-generated overhead food photos (or side-angle for drinks) via `gpt-image-1.5`
+- Approve, retry, or cancel each generated image before adding to your menu
+- Save menus with a custom title (defaults to today's date)
+- View, edit, and delete saved menus
+- Images stored on Tigris; metadata stored in SQLite
 
-## Getting Started
+## Local Setup
+
+### Prerequisites
+
+- Node.js 18+
+- An [OpenAI API key](https://platform.openai.com/api-keys)
+- A [Tigris](https://www.tigrisdata.com/) account with a bucket and access keys
 
 ### Installation
 
-Install the dependencies:
-
 ```bash
+git clone https://github.com/anniebabannie/mealplanner-sprite.git
+cd mealplanner-sprite
 npm install
 ```
 
-### Development
+### Environment Variables
 
-Start the development server with HMR:
+Create a `.env` file in the project root:
+
+```
+OPENAI_API_KEY=your_openai_api_key
+
+AWS_ACCESS_KEY_ID=your_tigris_access_key_id
+AWS_SECRET_ACCESS_KEY=your_tigris_secret_access_key
+AWS_ENDPOINT_URL_S3=https://t3.storage.dev
+AWS_REGION=auto
+TIGRIS_BUCKET=your_bucket_name
+```
+
+### Development
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+App runs at `http://localhost:5173`.
 
-## Building for Production
-
-Create a production build:
+### Production Build
 
 ```bash
 npm run build
+npm start
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+App runs at `http://localhost:3000`.
